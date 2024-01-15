@@ -81,6 +81,7 @@ declare class Serialport {
     /**
      * @description: Monitors serial port information
      * @param {function} fn
+     * @param isDecode
      * @return {Promise<void>}
      */
     listen(fn: (...args: any[]) => void, isDecode?: boolean): Promise<void>;

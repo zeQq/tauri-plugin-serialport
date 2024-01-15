@@ -36,6 +36,83 @@
         console.error(err);
       });
   }
+
+  function write() {
+    serialport
+            .write('1234')
+            .then((res) => {
+              console.log('write serialport: ', res);
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+  }
+
+  function writeBinary() {
+    serialport
+            .writeBinary(new Uint8Array([0xFF, 0xFE, 0x03, 0x06, 0x05, 0xFE, 0xFF]))
+            .then((res) => {
+              console.log('write binary serialport: ', res);
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+  }
+
+  function read() {
+    serialport
+            .read({ timeout: 1000 })
+            .then((res) => {
+              console.log('read serialport: ', res);
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+  }
+
+  function listen() {
+    serialport
+            .listen((data: any[]) => {
+              console.log('listen serialport data: ', data);
+            }, false)
+            .then((res) => {
+              console.log('listen serialport: ', res);
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+  }
+
+  function cancelRead() {
+    serialport
+            .cancelRead()
+            .then((res) => {
+              console.log('cancel read: ', res);
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+  }
+
+  function closeAll() {
+    Serialport.closeAll()
+            .then(() => {
+              console.log('close all successful');
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+  }
+
+  function forceClose() {
+    Serialport.forceClose('COM4')
+            .then(() => {
+              console.log('force close successful!');
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+  }
 </script>
 
 <main class="container">
@@ -62,12 +139,19 @@
   </div>
 
   <div class="row">
-    <button on:click={openPort}>Connect</button>
     <input type="text" placeholder="write your com port here..." bind:value={name} />
+    <button on:click={openPort}>Connect</button>
     <button on:click={closePort}>Disconnect</button>
+    <button on:click={write}>Write</button>
+    <button on:click={writeBinary}>writeBinary</button>
   </div>
-
-
+  <div class="row">
+    <button on:click={read}>Read</button>
+    <button on:click={listen}>listen</button>
+    <button on:click={cancelRead}>cancelRead</button>
+    <button on:click={closeAll}>closeAll</button>
+    <button on:click={forceClose}>forceClose</button>
+  </div>
 </main>
 
 <style>

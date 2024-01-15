@@ -174,12 +174,14 @@ class Serialport {
   /**
    * @description: Monitors serial port information
    * @param {function} fn
+   * @param isDecode
    * @return {Promise<void>}
    */
   async listen(fn: (...args: any[]) => void, isDecode = true): Promise<void> {
     try {
       await this.cancelListen();
-      let readEvent = 'plugin-serialport-read-' + this.options.portName;
+      // let readEvent = 'plugin-serialport-read-' + this.options.portName;
+      let readEvent = 'plugin-serialport-read-' + this.options.portName.replace(/[\/.]/g, '_');
       this.unListen = await appWindow.listen<ReadDataResult>(
         readEvent,
         ({ payload }) => {
