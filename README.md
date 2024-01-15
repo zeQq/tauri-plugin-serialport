@@ -16,7 +16,7 @@ Install the Core plugin by adding the following to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-tauri-plugin-serialport = { git = "https://github.com/deid84/tauri-plugin-serialport", tag = "v0.1.0" }
+tauri-plugin-serialport = { git = "https://github.com/zeQq/tauri-plugin-serialport", tag = "v0.1.0" }
 ```
 
 Use in `src-tauri/src/main.rs`:
@@ -37,24 +37,24 @@ fn main() {
 `Install from a tagged release`
 
 ```
-npm install github:deid84/tauri-plugin-serialport#v0.1.0
+npm install github:zeQq/tauri-plugin-serialport#v1.0.1
 # or
-yarn add github:deid84/tauri-plugin-serialport#v0.1.0
+yarn add github:zeQq/tauri-plugin-serialport#v1.0.1
 ```
 
 `Install from a branch (dev)`
 
 ```
-npm install https://github.com/deid84/tauri-plugin-serialport\#master
+npm install https://github.com/zeQq/tauri-plugin-serialport\#master
 # or
-yarn add https://github.com/deid84/tauri-plugin-serialport\#master
+yarn add https://github.com/zeQq/tauri-plugin-serialport\#master
 ```
 
 `package.json`
 
 ```json
   "dependencies": {
-    "tauri-plugin-serialport-api": "github:deid84/tauri-plugin-serialport#v0.1.0",
+    "tauri-plugin-serialport-api": "github:zeQq/tauri-plugin-serialport#v1.0.1",
   }
 ```
 
